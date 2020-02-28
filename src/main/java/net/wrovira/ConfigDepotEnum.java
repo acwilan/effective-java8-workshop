@@ -1,6 +1,6 @@
 package net.wrovira;
 
-import net.wrovira.exception.PropertiesReadException;
+import net.wrovira.exception.ConfigNotAvailableException;
 
 import java.util.Map;
 
@@ -14,7 +14,7 @@ public enum ConfigDepotEnum {
         return INSTANCE;
     }
 
-    public Map<String, String> getConfig(String configFileName) throws PropertiesReadException {
+    public Map<String, String> getConfig(String configFileName) throws ConfigNotAvailableException {
         return ConfigDepot.INSTANCE.getConfig(configFileName);
     }
 

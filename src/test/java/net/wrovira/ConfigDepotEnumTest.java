@@ -1,6 +1,6 @@
 package net.wrovira;
 
-import net.wrovira.exception.PropertiesReadException;
+import net.wrovira.exception.ConfigNotAvailableException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -58,7 +58,7 @@ public class ConfigDepotEnumTest {
 
     @Test
     public void givenInvalidInputFile_WhenGetConfig_ThenShouldThrowException() {
-        thrown.expect(PropertiesReadException.class);
+        thrown.expect(ConfigNotAvailableException.class);
 
         configDepotEnum.getConfig(INVALID_CONFIG_FILE);
     }

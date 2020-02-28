@@ -1,6 +1,6 @@
 package net.wrovira;
 
-import net.wrovira.exception.PropertiesReadException;
+import net.wrovira.exception.ConfigNotAvailableException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +16,7 @@ public class ConfigDepot {
 
     private ConfigDepot() {}
 
-    public Map<String, String> getConfig(String configFileName) throws PropertiesReadException {
+    public Map<String, String> getConfig(final String configFileName) throws ConfigNotAvailableException {
         if (filesMapCache.containsKey(configFileName)) {
             return filesMapCache.get(configFileName);
         }
@@ -32,7 +32,7 @@ public class ConfigDepot {
                 return propertiesLoaded;
             }
         } catch (final IOException | NullPointerException exception) {
-            throw new PropertiesReadException("An error occured while trying to load from config file " + configFileName, exception);
+            throw new ConfigNotAvailableException(configFileName, exception);
         }
     }
 
